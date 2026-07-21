@@ -1,0 +1,10 @@
+# Dependencies and build artifacts
+node_modules/
+build/
+dist/
+coverage/
+.cache/
+public
+
+# Lockfiles
+package-lock.json
