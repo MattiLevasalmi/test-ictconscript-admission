@@ -13,8 +13,8 @@ export default function EntryCard(props: Entry) {
         <p>{props.body}</p>
       </section>
       <section id="footer">
-        <h5>{props.isoTime}</h5>
-        {props.lat && props.lon ? (
+        <h5>{new Date(props.isoTime).toLocaleString('en-GB')}</h5>
+        {props.lat != undefined && props.lon != undefined ? (
           <button
             type="button"
             className="button"
