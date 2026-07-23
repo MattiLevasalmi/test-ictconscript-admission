@@ -17,8 +17,7 @@ export default function EntryCard(props: Entry) {
         {props.lat != undefined && props.lon != undefined ? (
           <button
             type="button"
-            className="button"
-            onClick={() => alert('A map will appear here!')}>
+            className="button">
             {props.lat}° {props.lon}°
           </button>
         ) : (

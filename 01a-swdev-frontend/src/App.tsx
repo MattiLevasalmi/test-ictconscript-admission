@@ -2,13 +2,12 @@ import Grid from '@mui/material/Grid';
 import './App.css';
 import EntryCard from './components/entryCard';
 import type { Entry } from './types/entryType';
-import { useState } from 'react';
-import data from '../../sample-data/data.json';
+import { useEffect, useState } from 'react';
 import Modal from '@mui/material/Modal';
 import NewEntryCard from './components/newEntryCard';
 
 function App() {
-  const [entries, setEntries] = useState<Array<Entry>>(data as Array<Entry>);
+  const [entries, setEntries] = useState<Array<Entry>>([]);
   const [modalState, setModalState] = useState<boolean>(false);
 
   const addEntry = (newEntry: Entry) => {
@@ -23,6 +22,12 @@ function App() {
   const handleClose = () => {
     setModalState(false);
   };
+
+  useEffect(() => {
+    fetch(`${import.meta.env.BASE_URL}data.json`)
+      .then((res) => res.json())
+      .then((data) => setEntries(data));
+  }, []);
 
   return (
     <>
