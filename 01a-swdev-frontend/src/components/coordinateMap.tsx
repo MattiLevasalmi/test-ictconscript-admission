@@ -1,8 +1,11 @@
-import { type LatLngExpression } from 'leaflet';
+import L, { type LatLngExpression } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './coordinateMap.css';
 import { MapContainer, Marker, TileLayer, useMap } from 'react-leaflet';
 import { useEffect } from 'react';
+import markerIconUrl from '../../node_modules/leaflet/dist/images/marker-icon.png';
+import markerIconRetinaUrl from '../../node_modules/leaflet/dist/images/marker-icon-2x.png';
+import markerShadowUrl from '../../node_modules/leaflet/dist/images/marker-shadow.png';
 
 type CoordinateMapProps = {
   latitude?: number;
@@ -37,6 +40,11 @@ export default function CoordinateMap(props: CoordinateMapProps) {
     props.variant === 'inline'
       ? 'coordinate-map-inline'
       : 'coordinate-map-modal';
+
+  L.Icon.Default.prototype.options.iconUrl = markerIconUrl;
+  L.Icon.Default.prototype.options.iconRetinaUrl = markerIconRetinaUrl;
+  L.Icon.Default.prototype.options.shadowUrl = markerShadowUrl;
+  L.Icon.Default.imagePath = '';
 
   return (
     <MapContainer
