@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/entries")
 public class EntryController {
@@ -27,11 +29,8 @@ public class EntryController {
   }
 
   @PostMapping("")
-  public EntryDto createEntry(@RequestBody EntryDto entryDto) {
-    return entryService.createEntry(entryDto.getTitle(), 
-                                    entryDto.getBody(),
-                                    entryDto.getLat(),
-                                    entryDto.getLon());
+  public EntryDto createEntry(@Valid @RequestBody EntryCreationRequest entry) {
+    return entryService.createEntry(entry);
   }
 
   @GetMapping("/{id}")

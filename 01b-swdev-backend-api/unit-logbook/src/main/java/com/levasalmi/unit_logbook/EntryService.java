@@ -22,13 +22,13 @@ public class EntryService {
       .toList();
   }
 
-  public EntryDto createEntry(String title, String body, Double lat, Double lon) {
+  public EntryDto createEntry(EntryCreationRequest entryRequest) {
     Entry entry = new Entry();
-    entry.setTitle(title);
-    entry.setBody(body);
+    entry.setTitle(entryRequest.getTitle());
+    entry.setBody(entryRequest.getBody());
     entry.setIsoTime(LocalDateTime.now());
-    entry.setLat(lat);
-    entry.setLon(lon);
+    entry.setLat(entryRequest.getLat());
+    entry.setLon(entryRequest.getLon());
     Entry savedEntry = entryRepository.save(entry);
     return EntryDto.from(savedEntry);
   }
