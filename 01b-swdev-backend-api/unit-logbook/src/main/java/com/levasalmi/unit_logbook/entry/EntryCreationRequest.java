@@ -1,4 +1,4 @@
-package com.levasalmi.unit_logbook;
+package com.levasalmi.unit_logbook.entry;
 
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class EntryCreationRequest {
-  
+
   @NotBlank(message = "Title cannot be blank")
   @Size(max = 120, message = "Title cannot exceed 120 characters")
   String title;

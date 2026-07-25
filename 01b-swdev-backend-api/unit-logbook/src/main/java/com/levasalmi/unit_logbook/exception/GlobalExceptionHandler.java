@@ -1,4 +1,4 @@
-package com.levasalmi.unit_logbook;
+package com.levasalmi.unit_logbook.exception;
 
 import java.time.Instant;
 
@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-  
+
   @ExceptionHandler(BaseException.class)
   public ResponseEntity<ErrorResponse> handleBaseException(BaseException ex, HttpServletRequest request) {
     ErrorResponse error = new ErrorResponse();
@@ -25,7 +25,8 @@ public class GlobalExceptionHandler {
   }
 
   @ExceptionHandler(MethodArgumentNotValidException.class)
-  public ResponseEntity<ErrorResponse> handleValidationException(MethodArgumentNotValidException ex, HttpServletRequest request) {
+  public ResponseEntity<ErrorResponse> handleValidationException(MethodArgumentNotValidException ex,
+      HttpServletRequest request) {
     ErrorResponse error = new ErrorResponse();
     error.setErrorCode("ValidationError");
     error.setMessage(ex.getBindingResult().getAllErrors().stream()

@@ -1,4 +1,4 @@
-package com.levasalmi.unit_logbook;
+package com.levasalmi.unit_logbook.entry;
 
 import java.time.LocalDateTime;
 
@@ -18,7 +18,7 @@ public class Entry {
 
   @Column(name = "title", length = 120, nullable = false)
   private String title;
-  
+
   @Column(name = "body", nullable = false)
   private String body;
 
@@ -37,10 +37,11 @@ public class Entry {
     this.body = body;
     this.isoTime = isoTime;
     this.lat = lat;
-    this.lon = lon; 
+    this.lon = lon;
   }
 
-  public Entry() {}
+  public Entry() {
+  }
 
   public Long getId() {
     return id;

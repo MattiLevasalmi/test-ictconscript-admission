@@ -1,4 +1,4 @@
-package com.levasalmi.unit_logbook;
+package com.levasalmi.unit_logbook.entry;
 
 import java.time.LocalDateTime;
 
@@ -13,7 +13,7 @@ public class EntryDto {
   public EntryDto(Long id, String title, String body, LocalDateTime isoTime, Double lat, Double lon) {
     this(id, title, body, isoTime);
     this.lat = lat;
-    this.lon = lon; 
+    this.lon = lon;
   }
 
   public EntryDto(Long id, String title, String body, LocalDateTime isoTime) {
@@ -23,7 +23,8 @@ public class EntryDto {
     this.isoTime = isoTime;
   }
 
-  public EntryDto() {}
+  public EntryDto() {
+  }
 
   public Long getId() {
     return id;
@@ -80,7 +81,6 @@ public class EntryDto {
         entry.getBody(),
         entry.getIsoTime(),
         entry.getLat(),
-        entry.getLon()
-    );
+        entry.getLon());
   }
 }

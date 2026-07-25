@@ -1,4 +1,4 @@
-package com.levasalmi.unit_logbook;
+package com.levasalmi.unit_logbook.controller;
 
 import java.util.List;
 
@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.levasalmi.unit_logbook.entry.EntryCreationRequest;
+import com.levasalmi.unit_logbook.entry.EntryDto;
+import com.levasalmi.unit_logbook.service.EntryService;
+
 import jakarta.validation.Valid;
 
 @RestController
@@ -18,7 +22,7 @@ public class EntryController {
 
   @Autowired
   private final EntryService entryService;
-  
+
   public EntryController(EntryService entryService) {
     this.entryService = entryService;
   }

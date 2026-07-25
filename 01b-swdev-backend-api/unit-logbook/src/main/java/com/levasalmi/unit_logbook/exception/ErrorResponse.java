@@ -1,4 +1,4 @@
-package com.levasalmi.unit_logbook;
+package com.levasalmi.unit_logbook.exception;
 
 import java.time.Instant;
 
@@ -9,7 +9,8 @@ public class ErrorResponse {
   private Instant timestamp;
   private String path;
 
-  public ErrorResponse() {}
+  public ErrorResponse() {
+  }
 
   public String getErrorCode() {
     return errorCode;

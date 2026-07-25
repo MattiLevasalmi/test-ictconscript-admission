@@ -1,4 +1,4 @@
-package com.levasalmi.unit_logbook;
+package com.levasalmi.unit_logbook.exception;
 
 import org.springframework.http.HttpStatus;
 
@@ -13,5 +13,5 @@ public class BaseException extends RuntimeException {
   public HttpStatus getStatus() {
     return status;
   }
-  
+
 }
