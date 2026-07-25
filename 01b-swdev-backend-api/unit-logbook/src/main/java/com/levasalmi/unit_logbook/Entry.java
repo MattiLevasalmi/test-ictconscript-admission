@@ -2,28 +2,45 @@ package com.levasalmi.unit_logbook;
 
 import java.time.LocalDateTime;
 
-public class EntryDto {
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "entries")
+public class Entry {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+
+  @Column(name = "title", length = 120, nullable = false)
   private String title;
+  
+  @Column(name = "body", nullable = false)
   private String body;
+
+  @Column(name = "isoTime", nullable = false)
   private LocalDateTime isoTime;
+
+  @Column(name = "lat", nullable = true)
   private Double lat;
+
+  @Column(name = "lon", nullable = true)
   private Double lon;
 
-  public EntryDto(Long id, String title, String body, LocalDateTime isoTime, Double lat, Double lon) {
-    this(id, title, body, isoTime);
-    this.lat = lat;
-    this.lon = lon; 
-  }
-
-  public EntryDto(Long id, String title, String body, LocalDateTime isoTime) {
+  public Entry(Long id, String title, String body, LocalDateTime isoTime, Double lat, Double lon) {
     this.id = id;
     this.title = title;
     this.body = body;
     this.isoTime = isoTime;
+    this.lat = lat;
+    this.lon = lon; 
   }
 
-  public EntryDto() {}
+  public Entry() {}
 
   public Long getId() {
     return id;
@@ -71,16 +88,5 @@ public class EntryDto {
 
   public void setLon(Double lon) {
     this.lon = lon;
-  }
-
-  public static EntryDto from(Entry entry) {
-    return new EntryDto(
-        entry.getId(),
-        entry.getTitle(),
-        entry.getBody(),
-        entry.getIsoTime(),
-        entry.getLat(),
-        entry.getLon()
-    );
   }
 }

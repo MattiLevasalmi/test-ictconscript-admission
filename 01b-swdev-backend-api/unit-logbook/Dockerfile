@@ -19,6 +19,8 @@ RUN groupadd -r appuser && useradd -r -g appuser -d /app appuser
 
 WORKDIR /app
 
+RUN mkdir data && chown appuser:appuser data
+
 COPY --from=builder /build/target/*jar ./app.jar
 
 USER appuser

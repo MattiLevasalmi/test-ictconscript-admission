@@ -1,20 +1,41 @@
 package com.levasalmi.unit_logbook;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
-public class EntryService {
-  
-  public EntryService() {}
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-  public List<EntryDto> getAllEntries() {
-    return List.of(
-      new EntryDto(1, "Test title 1", "Test body 1", "2024-06-01T12:00:00Z", 60.192059, 24.945831),
-      new EntryDto(2, "Test title 2", "Test body 2", "2024-06-02T12:00:00Z", 60.169856, 24.938379),
-      new EntryDto(3, "Test title 3", "Test body 3", "2024-06-03T12:00:00Z", 60.205490, 24.655899)
-    );
+@Service
+public class EntryService {
+
+  @Autowired
+  private final EntryRepository entryRepository;
+
+  public EntryService(EntryRepository entryRepository) {
+    this.entryRepository = entryRepository;
   }
 
-  public EntryDto getEntryById(int id) {
-    return new EntryDto(id, "Test title", "Test body", "2024-06-01T12:00:00Z", 60.192059, 24.945831);
+  public List<EntryDto> getAllEntries() {
+    return entryRepository.findAll().stream()
+      .map(EntryDto::from)
+      .toList();
+  }
+
+  public EntryDto createEntry(String title, String body, Double lat, Double lon) {
+    Entry entry = new Entry();
+    entry.setTitle(title);
+    entry.setBody(body);
+    entry.setIsoTime(LocalDateTime.now());
+    entry.setLat(lat);
+    entry.setLon(lon);
+    Entry savedEntry = entryRepository.save(entry);
+    return EntryDto.from(savedEntry);
+  }
+
+  public EntryDto getEntryById(Long id) {
+    return entryRepository.findById(id)
+        .map(EntryDto::from)
+        .orElseThrow(() -> new NoEntryFoundException(id));
   }
 }
