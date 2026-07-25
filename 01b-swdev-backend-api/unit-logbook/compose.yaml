@@ -1,0 +1,13 @@
+services:
+  unit-logbook:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: unit-logbook
+    ports:
+      - "8000:8000"
+    volumes:
+      - unitlogbook-data:/app/data/
+
+volumes:
+  unitlogbook-data:

@@ -3,6 +3,17 @@ Thank you for taking interest in applying into our ICT Conscript Program.
 
 In this repository you will find our **Admission Test** to the program. 
 
+# My Submissions
+## 01a-swdev-frontend
+[Solution Link](https://github.com/MattiLevasalmi/test-ictconscript-admission/tree/main/01a-swdev-frontend)
+
+[Deployment Link](https://mattilevasalmi.github.io/test-ictconscript-admission/)
+
+## 01b-swdev-backend-api
+[Solution Link](https://github.com/MattiLevasalmi/test-ictconscript-admission/tree/main/01b-swdev-backend-api)
+
+[Deployment Link](https://unit-logbook-api.onrender.com/swagger-ui.html)
+
 # 1. What we are looking for?
 We’re looking for individuals who are eager to grow and contribute in the following roles:
 1. **Software Developer** - Backend/API development, Identity Provider integrations (IdPs), frontend development (web or mobile)
