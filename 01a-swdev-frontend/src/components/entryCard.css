@@ -23,6 +23,10 @@
   }
 }
 
+.leaflet-container {
+  height: 380px;
+}
+
 #header {
   display: flex;
   align-items: center;

@@ -1,0 +1,33 @@
+.coordinate-map-modal {
+  box-sizing: border-box;
+  outline: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  width: min(90vw, 740px);
+  height: min(75vh, 580px);
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 16px;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.18);
+}
+
+.coordinate-map-inline {
+  box-sizing: border-box;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 220px;
+  height: 100%;
+  max-width: 100%;
+  border-radius: 12px;
+}
+
+.coordinate-map-modal .leaflet-container,
+.coordinate-map-inline .leaflet-container {
+  width: 100%;
+  height: 100%;
+}

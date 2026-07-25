@@ -5,6 +5,7 @@ import Close from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
 import { Grid, TextField } from '@mui/material';
 import React, { useState } from 'react';
+import CoordinateMap from './coordinateMap';
 
 type NewEntryCardProps = {
   addEntry: (newEntry: Entry) => void;
@@ -82,7 +83,8 @@ export default function NewEntryCard(props: NewEntryCardProps) {
               slotProps={{
                 htmlInput: {
                   max: 90,
-                  min: -90
+                  min: -90,
+                  step: 'any'
                 }
               }}
               value={formData.lat}
@@ -98,7 +100,8 @@ export default function NewEntryCard(props: NewEntryCardProps) {
               slotProps={{
                 htmlInput: {
                   max: 180,
-                  min: -180
+                  min: -180,
+                  step: 'any'
                 }
               }}
               value={formData.lon}
@@ -116,12 +119,16 @@ export default function NewEntryCard(props: NewEntryCardProps) {
               value={formData.body}
               onChange={handleChange}
             />
-          </Grid>
-          <Grid size={6}></Grid>
-          <Grid size={6}>
             <button type="submit" className="submitButton">
               Add Entry
             </button>
+          </Grid>
+          <Grid size={6}>
+            <CoordinateMap
+              latitude={formData.lat}
+              longitude={formData.lon}
+              variant="inline"
+            />
           </Grid>
           <Grid size={6}>
             {coordError ? (
